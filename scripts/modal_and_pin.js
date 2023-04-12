@@ -75,7 +75,9 @@ function create_pin(pin_details) {
         new_pin.classList.add('card');
         new_image.classList.add('pin_max_width');
 
-        new_pin.innerHTML = <div><div class="pin_modal">${pin_details.title}</div><div class="pin_modal">
+        new_pin.innerHTML = <div class="pin_modal">${pin_details.title}</div>
+        
+        `<div class="pin_modal">
 
             <div class="modal_head">
                 <div class="save_card">Save</div>
@@ -98,9 +100,8 @@ function create_pin(pin_details) {
                     </div>
             </div>
         </div><div class="pin_image">
-            </div></div> ;
+            </div>`;
 
-    
         document.querySelector('.pin_container').appendChild(new_pin);
         new_pin.children[2].appendChild(new_image);
 
