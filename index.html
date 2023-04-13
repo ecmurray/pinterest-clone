@@ -6,9 +6,6 @@
   <body>
     <script>
       // window.location.href = "final_board.html";
-      window.onload = function() {
-        myFunction();
-      };
 
       const fetch = require('node-fetch');
       const cheerio = require('cheerio');
@@ -16,25 +13,24 @@
 
       // const url = 'https://www.pinterest.com/ecmurray63/branding-inspo/more_ideas/?ideas_referrer=25';
       const url = 'https://www.pinterest.com/pin/652247958549099284/';
-      function downloadImages() {
-        const images = document.getElementsByTagName('img');
-        for (let i = 0; i < images.length; i++) {
-          const image = images[i];
-          const url = image.src;
-          const filename = 'img' + (i+1) + '.jpg';
-          fetch(url)
-          .then(response => response.blob())
-          .then(blob => {
-            const objectURL = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = objectURL;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          });
-        }
+      function downloadImage() {
+        const filename = 'my-photo.jpg';
+        fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          const objectURL = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = objectURL;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
       }
+
+      window.onload = function() {
+        downloadImages();
+      };
     </script> 
 
     <!-- <div>
